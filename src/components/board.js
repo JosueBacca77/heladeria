@@ -1,16 +1,24 @@
 import { connect } from "react-redux"
+import {  makeStyles } from "@material-ui/core";
+import { grey } from 'material-ui-colors';
+import FlavorContainer from "./flavorContainer";
+
+const useStyles = makeStyles((theme) => ({
+    freezer: {
+        backgroundColor: grey[200],
+        display: 'grid',
+        gridTemplateColumns:'repeat(5,1fr)',
+    }
+  }));
 
 function Board(props){
     const { iceCream } = props;
+    const classes = useStyles()
     return(
-        <article>
-            <h1>HELADOS</h1>
+        <article className={classes.freezer}>
             {
                 iceCream.map(product => (
-                    <section>
-                        <h3>{product.flavor}</h3>
-                        <p>{product.price}</p>
-                    </section>
+                    <FlavorContainer product={product}/>
                 ))
             }
         </article>
