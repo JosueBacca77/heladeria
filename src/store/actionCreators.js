@@ -1,4 +1,4 @@
-import { SELL_ICE_CREAM } from "./actions"
+import { PUT_SCOOP, SELL_ICE_CREAM } from "./actions"
 
 
 const sellIceCream =(flavor, count)=>{
@@ -7,3 +7,12 @@ const sellIceCream =(flavor, count)=>{
         payload:{flavor: flavor, count: count}
     })
 }
+
+const putScoop =(idFlavor)=>{
+    return({
+        type: PUT_SCOOP,
+        payload: idFlavor
+    })
+}
+
+export {sellIceCream, putScoop}

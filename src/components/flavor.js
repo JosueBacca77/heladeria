@@ -1,5 +1,6 @@
 import {  makeStyles } from "@material-ui/core";
 import { grey, blue, pink } from 'material-ui-colors';
+import './flavor.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,19 +40,21 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Flavor =({open, product, onChangeHover})=>{
+const Flavor =({open, product, onChangeHover, putScoop})=>{
 
     const classes = useStyles();
 
     return(
-        <section
-            onMouseEnter={onChangeHover}
-            onMouseLeave={onChangeHover}
-        >
+        <section className='m'>
         {
             open
             ?
-            <article className={classes.opened}>
+            <article 
+                className={classes.opened} 
+                onMouseEnter={onChangeHover}
+                onMouseLeave={onChangeHover}
+                onClick={putScoop}
+            >
                 <div style={{
                     backgroundColor: product.color,
                     margin:'5%',
@@ -61,7 +64,10 @@ const Flavor =({open, product, onChangeHover})=>{
                 }}></div>
             </article>
             :
-            <article className={classes.closed}>
+            <article className={classes.closed} 
+                onMouseEnter={onChangeHover}
+                onMouseLeave={onChangeHover}
+            >
                 <span className={classes.tagName}>{product.flavor}</span>
             </article>
         }
