@@ -1,10 +1,10 @@
-import { PUT_SCOOP, SELL_ICE_CREAM, CANCEL_SELLING } from "./actions"
+import { PUT_SCOOP, SELL_ICE_CREAM, CANCEL_SELLING, CLEAN_CORNET } from "./actions"
 
 
-const putScoop =(idFlavor)=>{
+const putScoop =(idFlavor, color)=>{
     return({
         type: PUT_SCOOP,
-        payload: idFlavor
+        payload: {idFlavor: idFlavor, color: color}
     })
 }
 
@@ -22,4 +22,11 @@ const cancelSelling =()=>{
     })
 }
 
-export {putScoop, sell, cancelSelling}
+const cleanCornet =()=>{
+    return({
+        type: CLEAN_CORNET,
+        payload: null
+    })
+}
+
+export {putScoop, sell, cancelSelling, cleanCornet}

@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import {  makeStyles } from "@material-ui/core";
 import { grey, brown } from 'material-ui-colors';
 import FlavorContainer from "./flavorContainer";
-import {putScoop, sell, cancelSelling} from "../store/actionCreators";
+import {putScoop, sell, cancelSelling, cleanCornet} from "../store/actionCreators";
 import { useEffect } from "react";
 import sellOptions from "../data/sell/sellOptions";
 import { CancelButton, SellButton } from "./Buttons";
@@ -32,6 +32,11 @@ const Board=(props)=>{
     const { iceCream, selling } = props;
     const classes = useStyles()
 
+    const cancelSell=()=>{
+        return props.cancelSelling() && props.cleanCornet()
+
+    }
+
     useEffect(() => {
         console.log(props)
     }, [props])
@@ -43,7 +48,7 @@ const Board=(props)=>{
                     iceCream.map(product => (
                         <FlavorContainer 
                             product={product}
-                            putScoop={(id)=>props.putScoop(id)}
+                            putScoop={()=>props.putScoop(product.id, product.color)}
                         />
                     ))
                 }
@@ -62,18 +67,17 @@ const Board=(props)=>{
                     {
                         selling.makingIceCream
                         ?
-                            <CancelButton onClick={props.cancelSelling}/>
+                            <CancelButton onClick={cancelSell}/>
                         :
                         null
                     }
-
                 </article>
             </section>
             <section>
                 {
                     selling.makingIceCream
                     ?
-                    <IceCream />
+                        <IceCream scoops={props.cornet}/>
                     :
                     null
                 }
@@ -97,6 +101,7 @@ const mapDispatchToProps = {
     putScoop,
     sell,
     cancelSelling,
+    cleanCornet,
 }
 
 const wrapper = connect(mapStateToProps, mapDispatchToProps)
