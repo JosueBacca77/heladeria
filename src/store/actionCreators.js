@@ -1,12 +1,5 @@
-import { PUT_SCOOP, SELL_ICE_CREAM } from "./actions"
+import { PUT_SCOOP, SELL_ICE_CREAM, CANCEL_SELLING } from "./actions"
 
-
-const sellIceCream =(flavor, count)=>{
-    return({
-        type: SELL_ICE_CREAM,
-        payload:{flavor: flavor, count: count}
-    })
-}
 
 const putScoop =(idFlavor)=>{
     return({
@@ -15,4 +8,18 @@ const putScoop =(idFlavor)=>{
     })
 }
 
-export {sellIceCream, putScoop}
+const sell =(countScoops)=>{
+    return({
+        type: SELL_ICE_CREAM,
+        payload: countScoops
+    })
+}
+
+const cancelSelling =()=>{
+    return({
+        type: CANCEL_SELLING,
+        payload: null
+    })
+}
+
+export {putScoop, sell, cancelSelling}

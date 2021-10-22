@@ -6,8 +6,8 @@ const FlavorContainer =({product, putScoop})=>{
 
     const [hover, setHover] = useState(false)
 
-    function changeHover(){
-        setHover(!hover)
+    function changeHover(value){
+        setHover(value)
     }
 
     function handlePutScoop(){
@@ -17,7 +17,7 @@ const FlavorContainer =({product, putScoop})=>{
     return(
         <Flavor
             product={product} 
-            onChangeHover={changeHover}
+            onChangeHover={(value)=>changeHover(value)}
             open={hover}
             putScoop={handlePutScoop}
         />

@@ -1,8 +1,9 @@
 import { combineReducers } from "redux"
-import iceCream from "./products/iceCream"
-import cakeIceCream from "./products/cakeIceCream"
+import iceCream from "./../../data/products/iceCream"
+import cakeIceCream from "./../../data/products/cakeIceCream"
 import cash from "./cash"
 import cornet from "./cornet"
+import selling from "./selling"
 
 
 export default combineReducers({
@@ -10,4 +11,5 @@ export default combineReducers({
     cakeIceCream,
     cash,
     cornet,
+    selling,
   })
