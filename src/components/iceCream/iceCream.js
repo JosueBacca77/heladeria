@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { yellow } from '@material-ui/core/colors';
 import Scoop from './scoop';
-import { useEffect, useState } from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
