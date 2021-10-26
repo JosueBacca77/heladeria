@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { yellow } from '@material-ui/core/colors';
 import Scoop from './scoop';
+import { useEffect, useState } from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const IceCream =({scoops})=>{
+const IceCream =({cornet})=>{
 
     const classes = useStyles()
 
@@ -40,7 +41,7 @@ const IceCream =({scoops})=>{
         <article className={classes.root}>
             <section className={classes.scoops}>
                 {
-                    scoops.map(scoop=>(
+                    cornet.map(scoop=>(
                         <Scoop key={scoop.idFlavor} color={scoop.color}/>
                     ))
                 }

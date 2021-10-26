@@ -2,10 +2,10 @@ import { connect } from "react-redux"
 import {  makeStyles } from "@material-ui/core";
 import { grey, brown } from 'material-ui-colors';
 import FlavorContainer from "./flavorContainer";
-import {putScoop, sell, cancelSelling, cleanCornet} from "../store/actionCreators";
+import {putScoop, startSelling, cancelSelling, cleanCornet} from "../store/actionCreators";
 import { useEffect } from "react";
 import sellOptions from "../data/sell/sellOptions";
-import { CancelButton, SellButton } from "./Buttons";
+import { CancelButton, OptionSellButton, SellButton } from "./Buttons";
 import IceCream from "./iceCream/iceCream";
 
 
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     sellOptions:{
         display: 'flex',
         justifyContent:'space-evenly',
-        marginRight:'30%',
-    }
+        gap: '20px'
+    },
   }));
 
 const Board=(props)=>{
@@ -49,39 +49,45 @@ const Board=(props)=>{
                         <FlavorContainer 
                             product={product}
                             putScoop={()=>props.putScoop(product.id, product.color)}
+                            ableToSell={props.selling.makingIceCream}
                         />
                     ))
                 }
             </section>
             <section className={classes.table}>
-                <article className={classes.sellOptions}>
+                <section className={classes.sellOptions}>
                     {
+                        !selling.makingIceCream
+                        ?
                         sellOptions.map(option => 
-                            <SellButton
+                            <OptionSellButton
                                 key={option.id} 
                                 text={option.description}
-                                onClick={()=>props.sell(option.count)}
+                                onClick={()=>props.startSelling(option.count)}
                             />
                         )
+                        :
+                        <section className={classes.sellOptions}>
+                            <CancelButton onClick={cancelSell}/>
+                            <SellButton
+                                //onClick={()=>props.sell()}
+                            />
+                        </section>
                     }
+                </section>
+                <section style={{backgroundColor:'green'}}>
                     {
                         selling.makingIceCream
                         ?
-                            <CancelButton onClick={cancelSell}/>
+                        <IceCream cornet={props.cornet}/>
+                                
                         :
                         null
                     }
-                </article>
+                </section>
+                
             </section>
-            <section>
-                {
-                    selling.makingIceCream
-                    ?
-                        <IceCream scoops={props.cornet}/>
-                    :
-                    null
-                }
-            </section>
+            
         </main>
     )
 }
@@ -99,7 +105,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps = {
     putScoop,
-    sell,
+    startSelling,
     cancelSelling,
     cleanCornet,
 }

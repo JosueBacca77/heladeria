@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { styled } from '@material-ui/core/';
 import {Button} from "@material-ui/core";
-import {green, indigo, red, grey} from "@material-ui/core/colors";
+import {green, indigo, red, grey, yellow, amber, blue, pink} from "@material-ui/core/colors";
 
 
-const Sell = styled(Button)(({ theme }) => ({
+const OptionSell = styled(Button)(({ theme }) => ({
     color: indigo[900],
-    backgroundColor: green[500],
+    backgroundColor: pink[500],
     '&:hover': {
-      backgroundColor: green[700],
+      backgroundColor: pink[700],
     },
     borderColor: indigo[900],
     borderStyle:'solid',
@@ -26,9 +26,20 @@ const Sell = styled(Button)(({ theme }) => ({
     borderWidth:'4px'
   }));
 
- const SellButton =({text, onClick})=> {
+  const Sell = styled(Button)(({ theme }) => ({
+    color: blue[900],
+    backgroundColor: green[300],
+    '&:hover': {
+      backgroundColor: green[500],
+    },
+    borderStyle:'solid',
+    borderWidth:'4px',
+    borderColor: blue[900],
+  }));
+
+ const OptionSellButton =({text, onClick})=> {
     return (
-        <Sell variant="contained" onClick={onClick}>{text}</Sell>
+        <OptionSell variant="contained" onClick={onClick}>{text}</OptionSell>
     );
   }
 
@@ -38,4 +49,10 @@ const Sell = styled(Button)(({ theme }) => ({
     );
   }
 
-  export {SellButton, CancelButton}
+  const SellButton =({onClick})=> {
+    return (
+        <Sell variant="contained" onClick={onClick}>Confirmar Venta</Sell>
+    );
+  }
+
+  export {OptionSellButton, CancelButton, SellButton}

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Flavor =({open, product, onChangeHover, putScoop})=>{
+const Flavor =({open, product, onChangeHover, putScoop, ableToSell})=>{
 
     const classes = useStyles();
 
@@ -64,8 +64,8 @@ const Flavor =({open, product, onChangeHover, putScoop})=>{
             </article>
             :
             <article className={classes.closed} 
-                onMouseEnter={()=>onChangeHover(true)}
-                onMouseLeave={()=>onChangeHover(false)}
+                onMouseEnter={()=>ableToSell ? onChangeHover(true) : null}
+                onMouseLeave={()=>ableToSell ? onChangeHover(false): null}
             >
                 <span className={classes.tagName}>{product.flavor}</span>
             </article>

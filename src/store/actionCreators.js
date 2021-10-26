@@ -8,7 +8,7 @@ const putScoop =(idFlavor, color)=>{
     })
 }
 
-const sell =(countScoops)=>{
+const startSelling =(countScoops)=>{
     return({
         type: SELL_ICE_CREAM,
         payload: countScoops
@@ -29,4 +29,4 @@ const cleanCornet =()=>{
     })
 }
 
-export {putScoop, sell, cancelSelling, cleanCornet}
+export {putScoop, startSelling, cancelSelling, cleanCornet}

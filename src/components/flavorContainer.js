@@ -2,7 +2,7 @@ import { useState } from "react";
 import Flavor from "./flavor";
 
 
-const FlavorContainer =({product, putScoop})=>{
+const FlavorContainer =({product, putScoop, ableToSell})=>{
 
     const [hover, setHover] = useState(false)
 
@@ -16,6 +16,7 @@ const FlavorContainer =({product, putScoop})=>{
             onChangeHover={(value)=>changeHover(value)}
             open={hover}
             putScoop={putScoop}
+            ableToSell={ableToSell}
         />
     )
 }
