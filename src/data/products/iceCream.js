@@ -105,9 +105,6 @@ const defaulState = [
 
 export default function iceCream(state = defaulState, {type, payload}){
     switch (type) {
-        // case 'BUY_CHOCOLATE':
-        //     //
-        //     break;
         default:
             return state
     }

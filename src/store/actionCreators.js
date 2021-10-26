@@ -1,4 +1,4 @@
-import { PUT_SCOOP, SELL_ICE_CREAM, CANCEL_SELLING, CLEAN_CORNET } from "./actions"
+import { PUT_SCOOP, SELL_ICE_CREAM, CANCEL_SELLING, CLEAN_CORNET, SELL } from "./actions"
 
 
 const putScoop =(idFlavor, color)=>{
@@ -29,4 +29,11 @@ const cleanCornet =()=>{
     })
 }
 
-export {putScoop, startSelling, cancelSelling, cleanCornet}
+const sell =(count, price)=>{
+    return({
+        type: SELL,
+        payload: {count: count, price: price}
+    })
+}
+
+export {putScoop, startSelling, cancelSelling, cleanCornet, sell}

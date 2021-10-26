@@ -1,10 +1,11 @@
-const defaulState = 0
+import { SELL } from "../actions";
+
+const defaulState = 0.00
 
 export default function cash(state = defaulState, {type, payload}){
     switch (type) {
-        // case 'BUY_CHOCOLATE':
-        //     //
-        //     break;
+        case SELL:
+            return state + payload.count * payload.price
         default:
             return state
     }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '@material-ui/core/';
 import {Button} from "@material-ui/core";
-import {green, indigo, red, grey, yellow, amber, blue, pink} from "@material-ui/core/colors";
+import {green, indigo, red, grey, blue, pink} from "@material-ui/core/colors";
 
 
 const OptionSell = styled(Button)(({ theme }) => ({
@@ -17,7 +17,7 @@ const OptionSell = styled(Button)(({ theme }) => ({
 
   const Cancel = styled(Button)(({ theme }) => ({
     color: grey[900],
-    backgroundColor: red[500],
+    backgroundColor: red[400],
     '&:hover': {
       backgroundColor: red[700],
     },
@@ -28,9 +28,9 @@ const OptionSell = styled(Button)(({ theme }) => ({
 
   const Sell = styled(Button)(({ theme }) => ({
     color: blue[900],
-    backgroundColor: green[300],
+    backgroundColor: green[400],
     '&:hover': {
-      backgroundColor: green[500],
+      backgroundColor: green[700],
     },
     borderStyle:'solid',
     borderWidth:'4px',
@@ -49,9 +49,9 @@ const OptionSell = styled(Button)(({ theme }) => ({
     );
   }
 
-  const SellButton =({onClick})=> {
+  const SellButton =({onClick, enabled})=> {
     return (
-        <Sell variant="contained" onClick={onClick}>Confirmar Venta</Sell>
+        <Sell variant="contained" disabled={!enabled} onClick={onClick}>Confirmar Venta</Sell>
     );
   }
 
